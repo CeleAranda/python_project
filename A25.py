@@ -1,4 +1,4 @@
-import pygame, random
+import pygame, random, sys
 
 WIDTH = 720
 HEIGHT = 720
@@ -12,8 +12,11 @@ screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("A25")
 clock = pygame.time.Clock()
 
+def get_font(size): # Returns Press-Start-2P in the desired size
+    return pygame.font.Font("assets/font.ttf", size)
+
 def draw_text(surface, text, size, x, y):
-	font = pygame.font.SysFont("candara", size)
+	font = get_font(size)
 	text_surface = font.render(text, True, WHITE)
 	text_rect = text_surface.get_rect()
 	text_rect.midtop = (x, y)
@@ -115,15 +118,13 @@ class Explosion(pygame.sprite.Sprite):
 				self.rect = self.image.get_rect()
 				self.rect.center = center
 
-def show_game_over_screen():
-	screen.fill(BLACK)
-	draw_text(screen, "GAME OVER", 70, WIDTH//2, HEIGHT// 4)
 
 def show_go_screen():
 	screen.blit(background, [0,0])
-	draw_text(screen, "A25-La expedición", 65, WIDTH // 2, HEIGHT // 4)
-	draw_text(screen, "INSTRUCCIONES", 35, WIDTH // 2, HEIGHT // 3/4)
-	draw_text(screen, "Presiona una tecla para continuar", 25, WIDTH // 2, HEIGHT * 6/7)
+	draw_text(screen, "A25", 55, WIDTH // 1/2, HEIGHT // 6)
+	draw_text(screen, "La expedición", 45, WIDTH // 1/2, HEIGHT // 4)
+	#draw_text(screen, "INSTRUCCIONES", 30, WIDTH // 2, HEIGHT // 3/4)
+	draw_text(screen, "Presiona una tecla para continuar", 15, WIDTH // 2, HEIGHT * 7/8)
 	pygame.display.flip()
 	waiting = True
 	while waiting:
