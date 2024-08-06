@@ -12,7 +12,7 @@ screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("A25")
 clock = pygame.time.Clock()
 
-def get_font(size): # Returns Press-Start-2P in the desired size
+def get_font(size): 
     return pygame.font.Font("assets/font.ttf", size)
 
 def draw_text(surface, text, size, x, y):
@@ -59,7 +59,7 @@ class Player(pygame.sprite.Sprite):
 		bullet = Bullet(self.rect.centerx, self.rect.top)
 		all_sprites.add(bullet)
 		bullets.add(bullet)
-		#laser_sound.play()
+		laser_sound.play()
 
 class Meteor(pygame.sprite.Sprite):
 	def __init__(self):
